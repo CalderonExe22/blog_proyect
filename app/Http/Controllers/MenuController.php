@@ -17,6 +17,6 @@ class MenuController extends Controller
         $menus = Menu::whereHas('roles', function ($query) use ($roles) {
             $query->whereIn('roles.id', $roles);
         })->whereNull('id_padre')->with('children')->get();
-        return view('components.partials.header', compact('menus'));
+        return $menus;
     }
 }

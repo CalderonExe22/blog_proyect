@@ -15,5 +15,5 @@ Route::view("/categories","category.index")->name("categories");
 
 Route::post('/login', [LoginController::class,'Login']);
 
-//Route::get('/menus', [MenuController::class, 'index'])->middleware('auth');
+Route::get('/menu', [MenuController::class, 'index'])->middleware('auth');
 
