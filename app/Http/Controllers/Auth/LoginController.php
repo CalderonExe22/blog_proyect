@@ -11,7 +11,7 @@ use League\Config\Exception\ValidationException;
 
 class LoginController extends Controller
 {
-    public function Login(Request $request)
+    public function login(Request $request)
     {
         $user = Auth::user();
         $request->validate([
@@ -20,11 +20,19 @@ class LoginController extends Controller
         ]);
         if(Auth::attempt($request->only('email','password'))){
             $request->session()->regenerate();
-            return to_route('deshboard');
+            return to_route('home');
         }
         throw ValidationValidationException::withMessages([
             'noRegister' => 'email no valido',
         ]);
         
     } 
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return to_route("home");
+    }
 }

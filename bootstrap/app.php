@@ -12,6 +12,13 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         //
+        $middleware->alias([
+            // Otros middlewares
+            'role' => \App\Http\Middleware\checkRole::class,
+        ]);
+        $middlewareGroups=[
+            'web' => [\App\Http\Middleware\DynamicHeader::class,],
+        ];
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

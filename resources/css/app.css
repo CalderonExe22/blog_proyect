@@ -1,3 +1,61 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body
+{
+    font-family: "Montserrat", sans-serif;
+}
+
+#btn-menu
+{
+    display: none;
+}
+
+.container-menu
+{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 300ms all ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#btn-menu:checked ~ .container-menu
+{
+    opacity: 1;
+    visibility: visible;
+}
+
+.cont-menu{
+    float: right;
+    width: 100%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: #c1c1c1;
+    position: relative;
+    transition: 300ms all ease;
+}
+
+.cont-menu nav
+{
+    transform: translate(15%);
+}
+.cont-menu a
+{
+    display: block;
+}
+
+.cont-menu label
+{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
