@@ -1,3 +1,3 @@
 <x-layout.layout>
-    <h1>Deshboard</h1>
+    <x-partials.sidebar name-user="{{ Auth::user()->name }}"/>
 </x-layout.layout>
