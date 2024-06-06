@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
 {
+
+    public function index()
+    {
+        $posts = Blog::get();
+        return view('category.index',['posts'=>$posts]);
+    }
+
     public function store(Request $request){
         $request->validate([
             'title' => 'required|max:100',

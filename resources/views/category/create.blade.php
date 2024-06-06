@@ -7,7 +7,8 @@
         @csrf
         <input type="text" id="title" name="title">
         <input type="hidden" name="content" id="content">
-        <div class="bg-red-100 w-full" id="editorjs"></div>
+        <!-- editor.js -->
+        <div class="bg-red-100 w-2/3" id="editorjs"></div>
         <input  type="submit" value="Subir">
     </form>
 </x-layout.layout>

@@ -20,6 +20,7 @@ class PostController extends Controller
     }
 
     public function updateMedia(Request $request){
+
         if($request->hasFile('image')){
             try{
                 $file = $request->image;
@@ -32,15 +33,16 @@ class PostController extends Controller
                 $file->storeAs('public/image/', $file_name_to_store);
 
                 // Construir la URL de la imagen
+                // php artisan storage:link
                 $image_preview_path = asset('storage/image/' . $file_name_to_store);
 
                 // Respuesta en el formato esperado por Editor.js
-                return response()->json([
+                /*return response()->json([
                     "success" => 1,
                     "file" => [
                         "url" => $image_preview_path,
                     ]
-                ]);
+                ]);*/
             }catch(\Exception $e){
                 Log::error('Error uploading file: ' . $e->getMessage());
                 return response()->json([

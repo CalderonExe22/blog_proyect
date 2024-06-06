@@ -2,6 +2,7 @@ import EditorJS from '@editorjs/editorjs';
 import Header from '@editorjs/header'; 
 import List from '@editorjs/list'; 
 import ImageTool from "@editorjs/image"
+
 const form = document.querySelector('form'); 
 const editor = new EditorJS({ 
   /** 
