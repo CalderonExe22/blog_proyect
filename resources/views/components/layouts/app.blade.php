@@ -16,10 +16,14 @@
     @stack('scripts')
 </head>
 <body>
-    <x-partials.header/>
+    @isset($header)
+        <div id="header">
+            <x-layouts.header/>
+        </div>
+    @endisset
         <main class="{{ $classMain ?? '' }}">
             {{ $slot }}
         </main>
-    <x-partials.footer/>
+    <x-layouts.footer/>
 </body>
 </html>

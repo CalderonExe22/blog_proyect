@@ -6,14 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Blog extends Model
+class Category extends Model
 {
     use SoftDeletes;
     use HasFactory;
 
-    public function categories()
+    function blogs()
     {
-        $this->belongsTo(Category::class);
+        $this->hasMany(Blog::class);
     }
-
 }

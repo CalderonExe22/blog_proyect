@@ -1,6 +1,4 @@
-
-<x-layouts.app title-page="Home" class-main="flex flex-col justify-center items-center gap-16">
-    <x-slot:header> </x-slot:header>
+<x-layouts.app title-app="Home">
     <section class="flex justify-center items-center w-lvh h-lvh text-white">
         <div class="flex items-start w-full">
             <div class="flex flex-col w-1/2 text-center gap-9 ms-12">

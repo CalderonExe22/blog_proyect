@@ -1,4 +1,4 @@
-<header class="flex fixed justify-around w-full py-10">
+<header id="{{ $idHeader ?? '' }}" class="flex fixed justify-around w-full py-10">
     <nav>
         <h1>BlogWorld</h1>
     </nav>
@@ -8,7 +8,7 @@
                 <li><a href="{{ route('home') }}">Home</a></li>
                 @foreach ($menus as $menu)
                     @if (!$menu->children->isEmpty())
-                        <x-partials.nav/>
+                        <x-layouts.nav/>
                     @endif
                 @endforeach
             @else

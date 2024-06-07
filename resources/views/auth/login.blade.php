@@ -1,7 +1,8 @@
 
-<x-layout.layout 
+<x-layouts.app 
 title-page="Login" 
 class-main="flex justify-center items-center h-screen">
+<x-slot:header></x-slot:header>
 
     <form class="flex flex-col gap-12 p-16 bg-slate-200" action="{{ route('login') }}" method="POST">
         @csrf
@@ -26,4 +27,4 @@ class-main="flex justify-center items-center h-screen">
         <input type="submit" value="Login" class="cursor-pointer">
     </form>
 
-</x-layout.layout>
+</x-layouts.app>
