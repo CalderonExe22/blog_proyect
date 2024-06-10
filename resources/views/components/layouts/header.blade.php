@@ -15,9 +15,9 @@
                     @endif
                 @endforeach
             @else
-                <li><a href="{{ route('home') }}">Home</a></li>
-                <li><a href="{{ route('category.index') }}">Categorias</a></li>
-                <li><a href="{{ route('login') }}">Login</a></li>
+                <li><a class="border-transparent border-b-4 p-2 transition-all hover:border-indigo-500 hover:text-indigo-500" href="{{ route('home') }}">Home</a></li>
+                <li><a class="border-transparent border-b-4 p-2 transition-all hover:border-indigo-500 hover:text-indigo-500" href="{{ route('category.index') }}">Categorias</a></li>
+                <li><a class="border-transparent border-b-4 p-2 transition-all hover:border-indigo-500 hover:text-indigo-500" href="{{ route('login') }}">Login</a></li>
             @endauth
         </ul>
     </nav>

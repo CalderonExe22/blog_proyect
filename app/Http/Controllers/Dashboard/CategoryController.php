@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function index()
     {   
-        $posts = Blog::get();
+        $posts = Blog::whereNull('deleted_at')->get();
         $categories = Category::get();
         return view('category.index',['posts'=>$posts,'categories'=>$categories,'selectedCategories'=>[]]);
     }
@@ -21,7 +21,7 @@ class CategoryController extends Controller
         $selectedCategories = $request->input('categories',[]);
         $categories = Category::get();
         if(empty($selectedCategories)){
-            $posts = Blog::get();
+            $posts = Blog::whereNull('deleted_at')->get();
         }else{
             $posts = Blog::whereIn('category_id', $selectedCategories)->get();
         }

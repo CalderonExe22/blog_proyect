@@ -26,21 +26,21 @@
                     <img src="{{ asset('storage/image2/'.$post->cover_image.'') }}" alt="" srcset="">
                 </div>
                 <div class="flex justify-center items-center gap-10">
-                    <a href="{{ route('show',$post->id) }}">ver</a>
+                    <a class="hover:text-indigo-500 transition-all" href="{{ route('show',$post->id) }}">Ver</a>
                     @if ($post->trashed())
                         <form action="{{ route('restore',$post->id) }}" method="post" onsubmit="return confirm('¿Estás seguro de que deseas restaurar este post?');">
                             @csrf
                             @method('PATCH')
-                            <input type="submit" value="Restaurar">
+                            <input class="cursor-pointer hover:text-green-700 transition-all" type="submit" value="Restaurar">
                         </form>
                     @else
                     <form action="{{ route('delete',$post->id) }}" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este post?');">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" value="Eliminar">
+                        <input class="cursor-pointer hover:text-red-700 transition-all" type="submit" value="Eliminar">
                     </form>
                     @endif
-                    <a href="{{ route('post.edit', ['post' => $post->id]) }}">Editar</a>
+                    <a class="cursor-pointer hover:text-yellow-500 transition-all" href="{{ route('post.edit', ['post' => $post->id]) }}">Editar</a>
                 </div>
             @endforeach
         </div>

@@ -11,8 +11,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $postRandom = Blog::inRandomOrder()->limit(1)->get();
-        $randomPosts = Blog::inRandomOrder()->limit(7)->get();
+        $postRandom = Blog::whereNull('deleted_at')->inRandomOrder()->limit(1)->get();
+        $randomPosts = Blog::whereNull('deleted_at')->inRandomOrder()->limit(7)->get();
         $categories =  Category::get();
         return view('home', ['postRandom' => $postRandom,'posts' => $randomPosts,'categories'=>$categories]);
     }
