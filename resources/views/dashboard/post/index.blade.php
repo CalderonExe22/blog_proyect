@@ -2,6 +2,11 @@
 <x-layouts.dashboard>
     <div class="pt-28 ps-16">
         <h1 class="text-5xl font-bold mb-28">Mis post</h1>
+        @if (@session('success'))   
+            <div class="py-16">
+                <span class="font-semibold">{{ session('success') }}</span>
+            </div> 
+        @endif()
         <div class="grid grid-cols-4 gap-8">
             <div class="text-center">
                 <h1 class="text-2xl font-semibold">Titulos post</h1>

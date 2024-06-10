@@ -9,7 +9,7 @@
         <div class="carousel flex h-full">
             @foreach ($categories as $category)
                 <div class="carousel-item relative flex justify-center items-center h-full w-full">
-                    <img class="object-cover h-full w-full transition-all imagenCategory" src="{{asset('imgs/el-valle-de-la-luna-the.jpg')}}" alt="">
+                    <img class="object-cover h-full w-full transition-all imagenCategory" src="{{asset('imgs/'.$category->cover_image)}}" alt="">
                     <div class="informationCategory absolute flex flex-col gap-16 z-20 text-white text-center transition opacity-0">
                         <h1 class="text-5xl font-medium">{{ $category->name }}</h1>
                         <form action="{{ route('category.filter') }}" method="get">

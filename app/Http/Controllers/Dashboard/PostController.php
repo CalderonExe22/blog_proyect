@@ -56,7 +56,7 @@ class PostController extends Controller
             $blog->cover_image = null;
         }
         $blog->save();
-        return to_route('post.index');
+        return to_route('post.index')->with('success', 'Post creado correctamente');
     }
 
     public function edit(Blog $post)
@@ -98,20 +98,20 @@ class PostController extends Controller
             $blog->cover_image = $file_name_to_store;
         }
         $blog->save();
-        return to_route('post.index')->with('success', 'Post created successfully');
+        return to_route('post.index')->with('success', 'Post actualizado correctamente');
     }
 
     public function delete(Blog $post)
     {
         $post->delete();
-        return to_route('post.index');
+        return to_route('post.index')->with('success', 'Post deshabilitado');
     }
 
     public function restore($post)
     {
         $postRestore = Blog::withTrashed()->findOrFail($post);
         $postRestore->restore();
-        return to_route('post.index');
+        return to_route('post.index')->with('success', 'Post restaurado');
     }
 
     public function updateMedia(Request $request){
