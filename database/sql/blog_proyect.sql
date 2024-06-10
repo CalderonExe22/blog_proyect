@@ -10,6 +10,8 @@
 CREATE TABLE `blogs` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `content` json NOT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `category_id` bigint unsigned NOT NULL,
@@ -19,7 +21,7 @@ CREATE TABLE `blogs` (
   PRIMARY KEY (`id`),
   KEY `blogs_category_id_foreign` (`category_id`),
   CONSTRAINT `blogs_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `cache` (
   `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -38,11 +40,12 @@ CREATE TABLE `cache_locks` (
 CREATE TABLE `categories` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cover_image` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `failed_jobs` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -103,14 +106,14 @@ CREATE TABLE `menus` (
   PRIMARY KEY (`id`),
   KEY `menus_id_padre_foreign` (`id_padre`),
   CONSTRAINT `menus_id_padre_foreign` FOREIGN KEY (`id_padre`) REFERENCES `menus` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `migrations` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `password_reset_tokens` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -163,29 +166,30 @@ CREATE TABLE `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `blogs` (`id`, `title`, `content`, `deleted_at`, `category_id`, `created_at`, `updated_at`, `cover_image`) VALUES
-(1, 'post1', '{\"time\": 1717800009273, \"blocks\": [{\"id\": \"-3eZ4OsdlV\", \"data\": {\"text\": \"post 1 editado\"}, \"type\": \"paragraph\"}, {\"id\": \"nmh4VHoFvg\", \"data\": {\"file\": {\"url\": \"http://blog_proyect.test/storage/image/Larry_Shinoda-2.1717702544.jpg\"}, \"caption\": \"\", \"stretched\": false, \"withBorder\": false, \"withBackground\": false}, \"type\": \"image\"}, {\"id\": \"I_jdCDcQPz\", \"data\": {\"text\": \"hola\"}, \"type\": \"paragraph\"}], \"version\": \"2.29.1\"}', '2024-06-07 22:40:51', 1, '2024-06-06 19:16:20', '2024-06-07 22:40:51', '');
-INSERT INTO `blogs` (`id`, `title`, `content`, `deleted_at`, `category_id`, `created_at`, `updated_at`, `cover_image`) VALUES
-(2, 'post 2', '{\"time\": 1717704452759, \"blocks\": [{\"id\": \"Y1uQhaUXvR\", \"data\": {\"text\": \"post 2&nbsp;\"}, \"type\": \"paragraph\"}, {\"id\": \"YqP3vnZ-qX\", \"data\": {\"file\": {\"url\": \"http://blog_proyect.test/storage/image/10-principales-tecnologias-frontend-para-usar-en-2022.1717704451.jpg\"}, \"caption\": \"\", \"stretched\": false, \"withBorder\": false, \"withBackground\": false}, \"type\": \"image\"}], \"version\": \"2.29.1\"}', NULL, 3, '2024-06-06 20:07:32', '2024-06-06 20:07:32', '1717704452/jpg');
-INSERT INTO `blogs` (`id`, `title`, `content`, `deleted_at`, `category_id`, `created_at`, `updated_at`, `cover_image`) VALUES
-(3, 'post 3', '{\"time\": 1717704734902, \"blocks\": [{\"id\": \"Zvf-DueR2L\", \"data\": {\"text\": \"post 3\"}, \"type\": \"paragraph\"}], \"version\": \"2.29.1\"}', NULL, 2, '2024-06-06 20:12:15', '2024-06-06 20:12:15', '1717704735/png');
-INSERT INTO `blogs` (`id`, `title`, `content`, `deleted_at`, `category_id`, `created_at`, `updated_at`, `cover_image`) VALUES
-(4, 'post 4', '{\"time\": 1717704957788, \"blocks\": [{\"id\": \"I7yfSalUz_\", \"data\": {\"text\": \"post 4\"}, \"type\": \"paragraph\"}], \"version\": \"2.29.1\"}', NULL, 1, '2024-06-06 20:15:57', '2024-06-06 20:15:57', '1717704957/png'),
-(5, 'post 4.0', '{\"time\": 1717705717220, \"blocks\": [{\"id\": \"WOkcIKDl1Q\", \"data\": {\"text\": \"post 4\"}, \"type\": \"paragraph\"}], \"version\": \"2.29.1\"}', NULL, 1, '2024-06-06 20:30:43', '2024-06-06 20:30:43', 'logoCamaro.1717705843.jpg'),
-(6, 'post 5', '{\"time\": 1717705965989, \"blocks\": [{\"id\": \"jigHDuWVBf\", \"data\": {\"text\": \"post 5\"}, \"type\": \"paragraph\"}], \"version\": \"2.29.1\"}', NULL, 2, '2024-06-06 20:32:46', '2024-06-06 20:32:46', 'Giotto_Bizzarini-2.1717705966.jpg'),
-(7, 'post 6', '{\"time\": 1717706485172, \"blocks\": [{\"id\": \"JCIf18Quha\", \"data\": {\"text\": \"post6\"}, \"type\": \"paragraph\"}], \"version\": \"2.29.1\"}', NULL, 1, '2024-06-06 20:41:25', '2024-06-06 20:41:25', 'home.1717706485.png'),
-(8, 'post 7', '{\"time\": 1717706721511, \"blocks\": [{\"id\": \"KyRdbC-x2K\", \"data\": {\"text\": \"post 7 editado\"}, \"type\": \"paragraph\"}, {\"id\": \"--cOdPI-fS\", \"data\": {\"file\": {\"url\": \"http://blog_proyect.test/storage/image/logoCamaro.1717706714.jpg\"}, \"caption\": \"\", \"stretched\": false, \"withBorder\": false, \"withBackground\": false}, \"type\": \"image\"}], \"version\": \"2.29.1\"}', NULL, 1, '2024-06-06 20:44:38', '2024-06-06 20:45:33', 'Larry_Shinoda-2.1717706678.jpg');
+INSERT INTO `blogs` (`id`, `title`, `description`, `location`, `content`, `deleted_at`, `category_id`, `created_at`, `updated_at`, `cover_image`) VALUES
+(10, 'post 1', 'post 1', 'Lago puelo', '{\"time\": 1717986172148, \"blocks\": [{\"id\": \"8kG0wAmWG1\", \"data\": {\"text\": \"post 1\", \"level\": 3}, \"type\": \"header\"}, {\"id\": \"JT-38k7Ung\", \"data\": {\"file\": {\"url\": \"http://blog_proyect.test/storage/image/e-points.1717941343.jpg\"}, \"caption\": \"post 1\", \"stretched\": false, \"withBorder\": false, \"withBackground\": false}, \"type\": \"image\"}, {\"id\": \"jNN0Y5o9Xm\", \"data\": {\"file\": {\"url\": \"http://blog_proyect.test/storage/image/Larry_Shinoda-2.1717942790.jpg\"}, \"caption\": \"\", \"stretched\": false, \"withBorder\": false, \"withBackground\": false}, \"type\": \"image\"}], \"version\": \"2.29.1\"}', NULL, 2, '2024-06-08 02:11:59', '2024-06-10 14:46:45', 'home.1718030724.png');
+INSERT INTO `blogs` (`id`, `title`, `description`, `location`, `content`, `deleted_at`, `category_id`, `created_at`, `updated_at`, `cover_image`) VALUES
+(11, 'post 2', 'post 2', 'Neuquen', '{\"time\": 1717853575171, \"blocks\": [{\"id\": \"hHVxEfD_Qx\", \"data\": {\"text\": \"post 2\"}, \"type\": \"paragraph\"}, {\"id\": \"s-FdxoYBb-\", \"data\": {\"file\": {\"url\": \"http://blog_proyect.test/storage/image/logoCamaro.1717819659.jpg\"}, \"caption\": \"\", \"stretched\": false, \"withBorder\": false, \"withBackground\": false}, \"type\": \"image\"}, {\"id\": \"VHU0R-Gok2\", \"data\": {\"file\": {\"url\": \"http://blog_proyect.test/storage/image/Malcolm-Sayer-3.1717853574.jpg\"}, \"caption\": \"\", \"stretched\": false, \"withBorder\": false, \"withBackground\": false}, \"type\": \"image\"}], \"version\": \"2.29.1\"}', NULL, 1, '2024-06-08 04:07:41', '2024-06-08 13:32:56', 'home.1717819661.png');
+INSERT INTO `blogs` (`id`, `title`, `description`, `location`, `content`, `deleted_at`, `category_id`, `created_at`, `updated_at`, `cover_image`) VALUES
+(12, 'post 3', 'post 2 actualizado a 3', 'Villa la angostura', '{\"time\": 1717853146088, \"blocks\": [{\"id\": \"kExk8lnQRI\", \"data\": {\"text\": \"post 3\"}, \"type\": \"paragraph\"}, {\"id\": \"JUxxZRhLyL\", \"data\": {\"file\": {\"url\": \"http://blog_proyect.test/storage/image/Giotto_Bizzarini-2.1717853143.jpg\"}, \"caption\": \"\", \"stretched\": false, \"withBorder\": false, \"withBackground\": false}, \"type\": \"image\"}], \"version\": \"2.29.1\"}', NULL, 2, '2024-06-08 13:25:46', '2024-06-08 13:25:46', 'logoCamaro.1717853146.jpg'),
+(13, 'post 4', 'post 4', 'Cordoba', '{\"time\": 1718029756003, \"blocks\": [{\"id\": \"YNQ2GW0j18\", \"data\": {\"text\": \"post 4\", \"level\": 3}, \"type\": \"header\"}, {\"id\": \"XM9QgUwrYw\", \"data\": {\"text\": \"este es el post 4\"}, \"type\": \"paragraph\"}, {\"id\": \"L8BpFpmA1w\", \"data\": {\"file\": {\"url\": \"http://blog_proyect.test/storage/image/Malcolm-Sayer-3.1717874606.jpg\"}, \"caption\": \"\", \"stretched\": false, \"withBorder\": false, \"withBackground\": false}, \"type\": \"image\"}], \"version\": \"2.29.1\"}', NULL, 2, '2024-06-08 19:23:29', '2024-06-10 14:29:25', 'Giotto_Bizzarini-2.1718029765.jpg'),
+(14, 'post 5', 'post 5', 'Cordoba', '{\"time\": 1717904640707, \"blocks\": [{\"id\": \"EuhzVd9-VX\", \"data\": {\"text\": \"post 5\"}, \"type\": \"paragraph\"}, {\"id\": \"aMTJXh8tgs\", \"data\": {\"file\": {\"url\": \"http://blog_proyect.test/storage/image/tree-leaf-icon-and-logos-of-green-tree-leaf-ecology-and-nature-set-for-logo-design-free-vector.1717904638.png\"}, \"caption\": \"\", \"stretched\": false, \"withBorder\": false, \"withBackground\": false}, \"type\": \"image\"}], \"version\": \"2.29.1\"}', NULL, 3, '2024-06-09 03:44:50', '2024-06-09 03:44:50', 'wallpaperflare.com_wallpaper.1717904690.jpg'),
+(15, 'post 6', 'post 6', 'Cordoba', '{\"time\": 1717943429246, \"blocks\": [{\"id\": \"EuhzVd9-VX\", \"data\": {\"text\": \"post 6\"}, \"type\": \"paragraph\"}, {\"id\": \"aMTJXh8tgs\", \"data\": {\"file\": {\"url\": \"http://blog_proyect.test/storage/image/tree-leaf-icon-and-logos-of-green-tree-leaf-ecology-and-nature-set-for-logo-design-free-vector.1717904638.png\"}, \"caption\": \"\", \"stretched\": false, \"withBorder\": false, \"withBackground\": false}, \"type\": \"image\"}], \"version\": \"2.29.1\"}', NULL, 3, '2024-06-09 03:45:09', '2024-06-09 14:32:01', 'contactenos_fondo.1717943521.jpg'),
+(16, 'post 7', 'post 7', 'post 7', '{\"time\": 1717943408473, \"blocks\": [{\"id\": \"aN1nXl1P1v\", \"data\": {\"text\": \"Post 7\", \"level\": 2}, \"type\": \"header\"}, {\"id\": \"5ieKUqg1Zx\", \"data\": {\"file\": {\"url\": \"http://blog_proyect.test/storage/image/wallpaperflare.com_wallpaper.1717943405.jpg\"}, \"caption\": \"\", \"stretched\": false, \"withBorder\": false, \"withBackground\": false}, \"type\": \"image\"}], \"version\": \"2.29.1\"}', NULL, 2, '2024-06-09 14:30:08', '2024-06-09 14:30:08', 'logoCamaro.1717943408.jpg'),
+(17, 'Lago puelo', 'Lago Puelo es un destino turístico ubicado en la Patagonia argentina, en la provincia de Chubut, conocido por su impresionante belleza natural.', 'Lago puelo', '{\"time\": 1717986866854, \"blocks\": [{\"id\": \"T-kWiF_8Bs\", \"data\": {\"text\": \"Que hacer en lago puelo?\", \"level\": 3}, \"type\": \"header\"}, {\"id\": \"3mtbRugiiu\", \"data\": {\"text\": \"Lago pulo es un destino turístico ubicado en la&nbsp;Protagoniza argentina, en la provincia de Chut, conocido por su impresionante belleza natural. Rodeado por bosques frondosos y majestuosas montañas, el lago ofrece una amplia gama de actividades al aire libre para los amantes de la naturaleza y los deportes.\"}, \"type\": \"paragraph\"}, {\"id\": \"GRMiKy9RfO\", \"data\": {\"text\": \"Desde caminatas y paseos en kayak hasta pesca y acampar, hay opciones para todos los gustos y edades.\"}, \"type\": \"paragraph\"}, {\"id\": \"0dMIXnIt-B\", \"data\": {\"text\": \"Es parte de la región&nbsp;Comarca Andina&nbsp;y también cuenta con una gran oferta gastronómica y de alojamiento, lo que la hace perfecta para una escapada de fin de semana o unas vacaciones más largas. Aquí listamos algunas de&nbsp;las mejores actividades para realizar en Lago Puelo&nbsp;y descubriremos todo lo que este hermoso lugar tiene para ofrecer.\"}, \"type\": \"paragraph\"}, {\"id\": \"zso-ZThPZK\", \"data\": {\"file\": {\"url\": \"http://blog_proyect.test/storage/image/Lago-Puelo-Chubut.1717986328.webp\"}, \"caption\": \"\", \"stretched\": false, \"withBorder\": false, \"withBackground\": false}, \"type\": \"image\"}, {\"id\": \"gBVJapeb0Q\", \"data\": {\"text\": \"Lago Suelo&nbsp;es un destino turístico ubicado en la&nbsp;Protagoniza argentina, en la provincia de Chut, conocido por su impresionante belleza natural. Rodeado por bosques frondosos y majestuosas montañas, el lago ofrece una amplia gama de actividades al aire libre para los amantes de la naturaleza y los deportes.\"}, \"type\": \"paragraph\"}, {\"id\": \"c4Zk1CjLHw\", \"data\": {\"text\": \"Desde caminatas y paseos en ka yak hasta pesca y acampar, hay opciones para todos los gustos y edades.\"}, \"type\": \"paragraph\"}, {\"id\": \"evYZXx3XNg\", \"data\": {\"text\": \"Es parte de la región&nbsp;Comarca Andina&nbsp;y también cuenta con una gran oferta gastronómica y de alojamiento, lo que la hace perfecta para una escapada de fin de semana o unas vacaciones más largas. Aquí listamos algunas de&nbsp;las mejores actividades para realizar en Lago Puelo&nbsp;y descubriremos todo lo que este hermoso lugar tiene para ofrecer.\"}, \"type\": \"paragraph\"}], \"version\": \"2.29.1\"}', NULL, 1, '2024-06-10 02:25:32', '2024-06-10 13:50:24', 'Lago-Puelo-Chubut.1717986874.webp');
 
 
 
 
 
-INSERT INTO `categories` (`id`, `name`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'Montañas', NULL, NULL, NULL);
-INSERT INTO `categories` (`id`, `name`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(2, 'Valles', NULL, NULL, NULL);
-INSERT INTO `categories` (`id`, `name`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(3, 'Rios', NULL, NULL, NULL);
+INSERT INTO `categories` (`id`, `name`, `cover_image`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 'Montañas', 'montañas.webp', NULL, NULL, NULL);
+INSERT INTO `categories` (`id`, `name`, `cover_image`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(2, 'Valles', 'valles.jpg', NULL, NULL, NULL);
+INSERT INTO `categories` (`id`, `name`, `cover_image`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(3, 'Rios', 'rios.jpg', NULL, NULL, NULL);
+INSERT INTO `categories` (`id`, `name`, `cover_image`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(4, 'Mesetas', 'mesetas.jpg', NULL, NULL, NULL);
 
 
 
@@ -193,21 +197,23 @@ INSERT INTO `categories` (`id`, `name`, `deleted_at`, `created_at`, `updated_at`
 
 
 
+INSERT INTO `menu_rol` (`menu_id`, `rol_id`, `created_at`, `updated_at`) VALUES
+(2, 1, NULL, NULL);
 INSERT INTO `menu_rol` (`menu_id`, `rol_id`, `created_at`, `updated_at`) VALUES
 (2, 2, NULL, NULL);
 INSERT INTO `menu_rol` (`menu_id`, `rol_id`, `created_at`, `updated_at`) VALUES
-(4, 2, NULL, NULL);
+(8, 2, NULL, NULL);
+INSERT INTO `menu_rol` (`menu_id`, `rol_id`, `created_at`, `updated_at`) VALUES
+(9, 2, NULL, NULL);
 
-
 INSERT INTO `menus` (`id`, `name`, `url`, `created_at`, `updated_at`, `id_padre`) VALUES
-(2, 'Dashboard', 'dashboard', '2024-06-03 15:07:08', '2024-06-03 15:07:08', NULL);
+(2, 'Categorias', 'category.index', '2024-06-03 15:07:08', '2024-06-03 15:07:08', NULL);
 INSERT INTO `menus` (`id`, `name`, `url`, `created_at`, `updated_at`, `id_padre`) VALUES
-(4, 'user', 'user', NULL, NULL, NULL);
+(8, 'Dashboard', 'dashboard', NULL, NULL, NULL);
 INSERT INTO `menus` (`id`, `name`, `url`, `created_at`, `updated_at`, `id_padre`) VALUES
-(5, 'Crear nuevo post', 'create', NULL, NULL, 4);
+(9, 'Crear post', 'create', NULL, NULL, 8);
 INSERT INTO `menus` (`id`, `name`, `url`, `created_at`, `updated_at`, `id_padre`) VALUES
-(6, 'Mis post', 'edit', NULL, NULL, 4),
-(7, 'show', 'show', NULL, NULL, 4);
+(10, 'Mis post', 'post.index', NULL, NULL, 8);
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '0001_01_01_000000_create_users_table', 1);
@@ -223,7 +229,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (24, '2024_06_03_164855_add_id_padre_to_menus_table', 5),
 (34, '2024_06_06_171547_create_categories_table', 6),
 (35, '2024_06_05_031452_create_blogs_table', 7),
-(36, '2024_06_06_194609_add_cover_image_to_blogs_table', 8);
+(36, '2024_06_06_194609_add_cover_image_to_blogs_table', 8),
+(37, '2024_06_08_020411_add_description_to_blogs_table', 9),
+(38, '2024_06_09_011731_add_location_to_blogs_table', 10),
+(39, '2024_06_10_150636_add_cover_image_to_categories_table', 11),
+(40, '2024_06_10_152248_change_column_type_in_blogs_table', 12);
 
 
 
@@ -234,9 +244,7 @@ INSERT INTO `roles` (`id`, `description`, `created_at`, `updated_at`) VALUES
 
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('bKMt1JneMxWrYYJ4fsODoQMuIfDY3gzCEHdTh04n', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiZzR2NDBFZEFqekJleEsyTkRKck5VZEttbUx4MnRTMW9najBiTlpyMSI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozNjoiaHR0cDovL2Jsb2dfcHJveWVjdC50ZXN0L3Bvc3QvZWRpdC8xIjt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly9ibG9nX3Byb3llY3QudGVzdC9kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO30=', 1717800287);
-INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('yQqjFqEgo7SArPNyyWVaNqdNcLocKIgBqBAXwrVo', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiSVByazlhYU9qaVkyWnJBaWJaS2c5VnJMY29KNnN0UVJiTzFXOHBIbCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly9ibG9nX3Byb3llY3QudGVzdC9wb3N0L2NyZWF0ZSI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1717790823);
+('oTRSIY0wKUV0d53eU3IHFxlbNssbria3wtjKEPD3', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoibjl3Z1lLZzJqOVYzOHRxTjRXUnpCUVJUdldMZFU4YXVDbG1LWDl3RSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjQ6Imh0dHA6Ly9ibG9nX3Byb3llY3QudGVzdCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1718033173);
 
 
 INSERT INTO `user_rol` (`user_id`, `rol_id`, `created_at`, `updated_at`) VALUES
