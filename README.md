@@ -7,7 +7,9 @@ Este sitio web ha sido desarrollado como parte de un trabajo práctico para la a
 La plataforma está diseñada para ofrecer diferentes niveles de interacción según el rol del usuario. Los usuarios con el rol "view" pueden explorar y disfrutar de las publicaciones del blog, accediendo a información detallada sobre los destinos naturales presentados. Por otro lado, los usuarios con el rol "autor" tienen la capacidad de crear, editar, eliminar y visualizar publicaciones, contribuyendo activamente al contenido del blog.
 
 ### Página de Inicio:
-(IMG de la Página de Inicio)
+![image](https://github.com/CalderonExe22/blog_proyect/assets/117313739/38905230-cbbc-4827-8075-bcecf9d9068a)
+![image](https://github.com/CalderonExe22/blog_proyect/assets/117313739/53ae689e-1b63-4a30-aedd-d0c4394696f0)
+![image](https://github.com/CalderonExe22/blog_proyect/assets/117313739/a5b81224-c666-4f2a-b3be-00aedc08fa6e)
 
 ## Desarrolladores:
 * Exequiel Calderon FAI-4432
