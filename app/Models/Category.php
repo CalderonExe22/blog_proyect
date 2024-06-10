@@ -11,6 +11,7 @@ class Category extends Model
     use SoftDeletes;
     use HasFactory;
 
+    //one-to-many relationship
     function blogs()
     {
         $this->hasMany(Blog::class);

@@ -4,7 +4,7 @@ title-page="Login"
 class-main="flex justify-center items-center h-screen">
 <x-slot:header></x-slot:header>
 
-    <form class="flex flex-col gap-12 p-16" action="{{ route('login') }}" method="POST">
+    <form class="flex flex-col gap-12 p-16 bg-slate-200" action="{{ route('login') }}" method="POST">
         @csrf
         <h1 class="text-center text-5xl font-thin">Login</h1>
         @error('noRegister')

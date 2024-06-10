@@ -11,6 +11,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
     
+    //Define a many-to-many relationship.
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'user_rol', 'user_id', 'rol_id');

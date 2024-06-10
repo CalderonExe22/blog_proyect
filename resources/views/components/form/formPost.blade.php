@@ -53,7 +53,7 @@
         </div>
 
     <x-form.input 
-        class-input="flex flex-col gap-1" 
+        class-input="flex flex-col gap-1 w-[600px]" 
         class="border border-gray-600 rounded outline-none"
         label-content='Imagen portada del post:'
         label="cover_image"

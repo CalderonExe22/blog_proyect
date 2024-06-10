@@ -12,7 +12,7 @@
                     <a class="cursor-pointer p-2 transition-all hover:text-indigo-500" href="{{ route('show',$post->id) }}">Descubre mas</a>
                 </div>
             </div>
-            <img class="absolute top-0 object-cover w-full h-full -z-10 brightness-75"
+            <img class="absolute top-0 object-cover w-full h-full -z-10 brightness-50"
                 src="{{ asset('storage/image2/' . $post->cover_image . '') }}" alt="{{ $post->title }}">
         </section>
     @endforeach

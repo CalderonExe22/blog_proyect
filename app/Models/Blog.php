@@ -11,6 +11,7 @@ class Blog extends Model
     use SoftDeletes;
     use HasFactory;
 
+    //one-to-one or many relationship
     public function categories()
     {
         $this->belongsTo(Category::class);
