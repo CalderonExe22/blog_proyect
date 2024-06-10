@@ -1,6 +1,6 @@
 @foreach ($menus as $menu)
     @if (!$menu->children->isEmpty())
-        <label class="cursoe-pointer" for="btn-menu"><i class="fa-solid fa-bars"></i></label>
+        <label class="cursor-pointer" for="btn-menu"><i class="fa-solid fa-bars"></i></label>
         <input id="btn-menu" name="btn-menu" class="" type="checkbox">
         <div class="container-menu">
             <div class="cont-menu">

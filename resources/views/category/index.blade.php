@@ -27,7 +27,7 @@
                 <div class="flex flex-col gap-8 text-center py-10">
                     <h1 class="font-semibold text-xl text-black">{{ $post->title }}</h1>
                     <p class="">{{ $post->description }}</p>
-                    <a href="{{ route('show',$post->id) }}">Ver post</a>
+                    <a class="cursor-pointer p-2 transition-all hover:text-indigo-500" href="{{ route('show',$post->id) }}">Ver post</a>
                 </div>       
             </div>
         @endforeach

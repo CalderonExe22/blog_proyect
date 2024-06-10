@@ -8,7 +8,6 @@ use App\Http\Middleware\DynamicHeader;
 use Illuminate\Support\Facades\Route;
 
 // Rutas públicas
-//Route::view('/', 'home')->name('home');
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::view('/login', 'auth.login')->name('login');
 Route::post('/login', [LoginController::class, 'login']);

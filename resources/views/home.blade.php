@@ -9,7 +9,7 @@
                     <span class="text-8xl italic">{{ $post->title }}</span>
                     <p class="text-2xl font-light">{{ $post->location }}</p>
                     <p class="text-2xl font-light">{{ $post->description }}</p>
-                    <a href="{{ route('show',$post->id) }}">Descubre mas</a>
+                    <a class="cursor-pointer p-2 transition-all hover:text-indigo-500" href="{{ route('show',$post->id) }}">Descubre mas</a>
                 </div>
             </div>
             <img class="absolute top-0 object-cover w-full h-full -z-10 brightness-75"
@@ -23,7 +23,7 @@
                 <h1 class="text-8xl">
                     Descubre lo lindo de Argentina.
                 </h1>
-                <a href="{{ route('category.index') }}" class="text-3xl">Descubre mas</a>
+                <a href="{{ route('category.index') }}" class="text-2xl font-normal p-2 transition-all hover:text-indigo-500">Descubre mas</a>
             </div>
             <div class="flex items-center h-full">
                 <div class="relative h-full  z-0">
@@ -46,5 +46,5 @@
     <x-homePost :posts="$posts" />
 
     <x-carruselCategory :categories="$categories" />
-    
+
 </x-layouts.app>

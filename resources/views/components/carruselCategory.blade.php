@@ -14,7 +14,7 @@
                         <h1 class="text-5xl font-medium">{{ $category->name }}</h1>
                         <form action="{{ route('category.filter') }}" method="get">
                             <input type="hidden" name="categories[]" value="{{ $category->id }}">
-                            <input type="submit" value="Descubre mas" class="cursor-pointer">
+                            <input class="cursor-pointer p-2 transition-all hover:text-indigo-500" type="submit" value="Descubre mas" class="cursor-pointer">
                         </form>
                     </div>
                 </div>
