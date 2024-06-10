@@ -1,5 +1,5 @@
 
-<x-layouts.app class-main="px-96">
+<x-layouts.app title-page="post" class-main="px-96">
 
     <x-slot:header></x-slot:header>
 

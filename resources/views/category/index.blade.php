@@ -2,7 +2,7 @@
 
     <x-slot:header></x-slot:header>
     
-    <div class="flex flex-col gap-10 py-48 px-16 w-[550px] h-full">
+    <div class="flex flex-col gap-10 py-48 px-16 w-[650px] h-full">
         <form id="categoryForm" action="{{ route('category.filter') }}" method="GET">
             <div class="flex flex-col gap-10" name="category" id="category">
                 <label for="categorySelect">Seleccionar Categoria:</label>
@@ -14,7 +14,7 @@
                 @endforeach
                 <a href="{{ route('category.index') }}">Limpiar</a>
             </div>
-            <input class="mt-10" type="submit" value="filtrar">
+            <input class="cursor-pointer mt-10" type="submit" value="filtrar">
         </form> 
     </div>
 

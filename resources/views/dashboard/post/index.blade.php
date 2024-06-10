@@ -1,10 +1,10 @@
 
-<x-layouts.dashboard>
+<x-layouts.dashboard title-page="Mis post">
     <div class="pt-28 ps-16">
         <h1 class="text-5xl font-bold mb-28">Mis post</h1>
         @if (@session('success'))   
             <div class="py-16">
-                <span class="font-semibold">{{ session('success') }}</span>
+                <span class="font-semibold text-3xl">{{ session('success') }}</span>
             </div> 
         @endif()
         <div class="grid grid-cols-4 gap-8">

@@ -1,7 +1,7 @@
 @push('scripts')
     @vite(['resources/js/update-editor.js'])
 @endpush
-<x-layouts.dashboard class-main="pt-28">
+<x-layouts.dashboard title-page="Editar post" class-main="pt-28">
     <div class="container">
         <form enctype="multipart/form-data" action="{{ route('update',['post' => $post->id]) }}" method="POST">
             @csrf
