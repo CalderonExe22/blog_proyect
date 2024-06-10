@@ -17,10 +17,10 @@ const editor = new EditorJS({
   tools: { 
     header: {
       class: Header,
+      inlineToolbar: true,
       config: {
         placeholder: 'Enter a header',
-        levels: [2, 3, 4, 5],
-        defaultLevel: 3
+        levels: [1 ,2, 3, 4, 5, 6],
       }
     }, 
     list: {

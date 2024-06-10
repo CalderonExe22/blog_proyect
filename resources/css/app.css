@@ -66,3 +66,23 @@ body
     cursor: pointer;
     font-size: 18px;
 }
+
+/* Efectos post del home */
+
+.postContainer:hover .imagePost {
+    filter: brightness(50%);
+}
+
+.postContainer:hover .information {
+    opacity: 1;
+}
+
+/* Efectos post del home */
+
+.postContainer:hover .imagePost {
+    filter: brightness(50%);
+}
+
+.postContainer:hover .information {
+    opacity: 1;
+}

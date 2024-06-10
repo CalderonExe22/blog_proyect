@@ -13,7 +13,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Blog::whereNull('deleted_at')->get();
+        $posts = Blog::withTrashed()->get();
         return view('dashboard.post.index',['posts'=>$posts]);
     }
 
@@ -23,17 +23,26 @@ class PostController extends Controller
         return view('dashboard.post.create',['categories'=>$categories]);
     }
 
+    public function show(Blog $post)
+    {
+        return view('dashboard.post.show',['post'=>$post]);
+    }
+
     public function store(Request $request){
         $request->validate([
             'title' => 'required',
+            'location' => 'required',
+            'description' => 'required',
             "content" => 'required',
             'category_id' => 'required|exists:categories,id',
-            'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'cover_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ]);
         $blog = new Blog;
         $blog->title = $request->input('title');
-        $blog->content = $request->input('content');
+        $blog->description = $request->input('description');
+        $blog->location = $request->input('location');
         $blog->category_id = $request->input('category_id');
+        $blog->content = $request->input('content');
         if($request->hasFile('cover_image')){
             $file = $request->cover_image;
             $fileNameWithExt = $file->getClientOriginalName();
@@ -47,7 +56,7 @@ class PostController extends Controller
             $blog->cover_image = null;
         }
         $blog->save();
-        return to_route('categories');
+        return to_route('post.index');
     }
 
     public function edit(Blog $post)
@@ -60,30 +69,49 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'location' => 'required',
+            'description' => 'required',
             "content" => 'required',
             'category_id' => 'required|exists:categories,id',
+            'cover_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ]);
         $blog = Blog::findOrFail($id);
+        $blog->title = $request->input('title');
+        $blog->description = $request->input('description');
+        $blog->location = $request->input('location');
+        $blog->category_id = $request->input('category_id');
         $blog->content = $request->input('content');
         if($request->hasFile('cover_image')){
             if($blog->cover_image){
-                $oldImagePath = public_path('image'.'/'.$blog->cover_image);
+                $oldImagePath = public_path('public/image2/' . $blog->cover_image);
                 if(file_exists($oldImagePath)){
                     unlink($oldImagePath);
                 }
             }
-            $imageName = time().'/'. $request->cover_image->extension_loaded();
-            $request->cover_image->move(public_path('image',$imageName));
-            $blog->cover_image = $imageName;
+            $file = $request->cover_image;
+            $fileNameWithExt = $file->getClientOriginalName();
+            $file_name = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            $file_extension = $file->getClientOriginalExtension();
+            $file_name_to_store = $file_name.'.'.time().'.'.$file_extension;
+            $file->storeAs('public/image2/', $file_name_to_store);
+            // Asigna el nombre del archivo guardado al campo cover_image
+            $blog->cover_image = $file_name_to_store;
         }
         $blog->save();
-        return to_route('categories')->with('success', 'Post created successfully');
+        return to_route('post.index')->with('success', 'Post created successfully');
     }
 
     public function delete(Blog $post)
     {
         $post->delete();
-        return to_route('categories');
+        return to_route('post.index');
+    }
+
+    public function restore($post)
+    {
+        $postRestore = Blog::withTrashed()->findOrFail($post);
+        $postRestore->restore();
+        return to_route('post.index');
     }
 
     public function updateMedia(Request $request){

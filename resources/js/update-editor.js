@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 class: ImageTool,
                 config: {
                     endpoints: {
-                        byFile: "/categories/media", // Your backend file uploader endpoint
-                        byUrl: "/categories/media", // Your endpoint that provides uploading by Url
+                        byFile: "/post/media", // Your backend file uploader endpoint
+                        byUrl: "/post/media", // Your endpoint that provides uploading by Url
                     },
                     additionalRequestData: {
                         _token: document.querySelector('meta[name="csrf"]').content, // Ajusta 'token' al valor del token CSRF de tu aplicación

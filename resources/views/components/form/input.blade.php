@@ -7,12 +7,17 @@
     'value'  => '',
     'required'  => false,
     'readonly'  => false,
+    'classInput' => '',
+    'labelContent' => '',
+    'class' => ''
+
 ])
 <div class="{{ $classInput }}">
     
     <label for="{{ $label }}">{{ $labelContent ?? ''  }}</label>
 
     <input 
+        class="{{ $class }}"
         type="{{ $type }}"
         id="{{ $id }}"
         name="{{ $name }}"

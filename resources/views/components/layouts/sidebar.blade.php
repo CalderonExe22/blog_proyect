@@ -1,6 +1,6 @@
 
-<div class="{{ $className ?? '' }}">
-    <div class="flex flex-col justify-left ps-10 gap-16 pt-28 h-auto w-[350px]">
+<div class="h-auto w-[350px]">
+    <div class="sticky top-0 flex flex-col justify-left ps-10 gap-16 pt-28 ">
         <h1 class="text-3xl">Bienvenido: {{ $nameUser ?? "" }}</h1>
         <ul class="flex flex-col gap-10 w-full">
             <li><a class="py-4 ps-2 border-s-4 border-color: transparent hover:border-s-indigo-500 transition-[300ms]" href="{{ route('home') }}">Volver al home</a></li>
