@@ -79,12 +79,20 @@ DB_PASSWORD=remplazar_con_tu_contraseña
 8. Migra las tablas de la base de datos ejecutando el siguiente comando:
 ``` bash
 php artisan migrate
+``` 
+9. Puede poblar la base de datos con el Usuario "mario@gmail.com" con contraseña "mario123". Y algunos post cargados, importando el sql que se encuentra en el siguiente directorio:
+``` bash
+blog_proyect/database/sql/blog_proyect.sql
+``` 
+10. Crear la carpeta de almacenamiento de imagenes de prueba, ejecutando el siguiente comando:
+``` bash
+php artisan storage:link
 ```
-9. Compila los assets del front-end (JavaScript y CSS) ejecutando el siguiente comando:
+12. Compila los assets del front-end (JavaScript y CSS) ejecutando el siguiente comando:
 ``` bash
 npm run dev
 ```
-10. Finalmente iniciar el servidor de desarrollo local de Laravel ejecutando el siguiente comando:
+13. Finalmente iniciar el servidor de desarrollo local de Laravel ejecutando el siguiente comando:
 ``` bash
 php artisan serve
 ```
